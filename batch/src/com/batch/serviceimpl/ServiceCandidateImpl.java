@@ -87,4 +87,40 @@ public class ServiceCandidateImpl implements ServiceCandidate  {
 		return candidateList;
 	}
 
+	
+	@Override
+	public Candidate viewCandidateById(int candidateId) {
+		try{
+			Connection connection=connectionInfo.getDBConnectionInfo();
+			String sql="call batch.viewCandidateById(?)";
+			CallableStatement statement=connection.prepareCall(sql);
+			statement.setInt(1, candidateId);
+			ResultSet set=statement.executeQuery();
+			while (set.next()) {
+				candidatebean=new Candidate();
+				candidatebean.setCandidateId(set.getInt("candidateId"));
+				candidatebean.setCandidateName(set.getString("candidateName"));
+				candidatebean.setCandidateFatherName(set.getString("candidateFatherName"));
+				candidatebean.setCandidateMobile(set.getString("candidateMobile"));
+				candidatebean.setCandidateEmail(set.getString("candidateEmail"));
+				candidatebean.setCandidatePermanentAddress(set.getString("candidatePermanentAddress"));
+				candidatebean.setCandidateQualification(set.getString("candidateQualification"));
+				candidatebean.setCandidateCollegeUniversity(set.getString("candidateCollegeUniversity"));
+				candidatebean.setCandidateCourseOne(set.getString("candidateCourse"));
+				candidatebean.setCandidateComment(set.getString("candidateComment"));
+				candidatebean.setCandidateCurrentDate(set.getString("candidateCurrentDate"));
+			}
+			
+		}catch (Exception e) {
+			System.out.println("ServiceCandidateImpl:viewCandidateById"+e);
+		}
+		return candidatebean;
+	}
+
+	@Override
+	public int updateCandidateById(Candidate candidate) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }
