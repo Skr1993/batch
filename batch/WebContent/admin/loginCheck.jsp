@@ -1,3 +1,4 @@
+<%@ page errorPage="myErrorPage.jsp" %>
 <%@page import="com.batch.serviceimpl.ServiceAdminImpl"%>
 <%@page import="com.batch.service.ServiceAdmin"%>
 <%@ include file="link.html"%>
@@ -6,12 +7,20 @@
 	<jsp:setProperty property="adminEmail" name="admin"/>
 	<jsp:setProperty property="adminPassword" name="admin"/>
 </jsp:useBean>
-<% 
-ServiceAdmin serviceAdmin=new ServiceAdminImpl();
-boolean b=serviceAdmin.loginAdmin(admin.getAdminEmail(), admin.getAdminPassword());
-if(b){%>
-	<jsp:include page="view.jsp"/>
-<%}else{
+<%
+if(!admin.getAdminEmail().isEmpty() && !admin.getAdminPassword().isEmpty()){
+	
+	ServiceAdmin serviceAdmin=new ServiceAdminImpl();
+	boolean b=serviceAdmin.loginAdmin(admin.getAdminEmail(), admin.getAdminPassword());
+	if(b){session.setAttribute("email", admin.getAdminEmail());
+		%>
+		<jsp:include page="view.jsp"/>
+	<%}else{
+		response.sendRedirect("sign.jsp");
+	  }
+}else{
 	response.sendRedirect("sign.jsp");
 }
+
 %>
+

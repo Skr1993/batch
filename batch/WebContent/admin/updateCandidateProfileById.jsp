@@ -1,3 +1,4 @@
+<%@ page errorPage="myErrorPage.jsp" %>
 <%@page import="com.batch.bean.Candidate"%>
 <%@page import="com.batch.serviceimpl.ServiceCandidateImpl"%>
 <%@page import="com.batch.service.ServiceCandidate"%>
@@ -13,15 +14,17 @@ Candidate candidateObject=candidateDao.viewCandidateById(candidate.getCandidateI
 <div class="container-fluid">
 <div class="row">
   <div class="col-sm-12 bg-success text-white text-center" >
-  <h1>Welcome,<%=candidateObject.getCandidateName()%></h1>
+  <h1>Welcome, <%=candidateObject.getCandidateName()%> and Your Id is  <%=candidateObject.getCandidateId()%></h1>
   </div>
 </div>
+<form action="updateCandidateProfile.jsp" method="post">
 <div class="row" style="padding: 30px;">
   	<div class="col-sm-4 text-center" style="padding-top: 60px;" ><img src="../image/profileImageDemo.png" class="img-circle" alt="profileImageDemo"> </div>
     <div  class="col-sm-8" >
 		    <div class="row" >
 		  		<div class="col-sm-2 bg-primary text-white" style="padding: 10px;">Name</div>
 		  		<div class="col-sm-10 bg-info text-white" style="padding: 10px;">
+		  		<input type="hidden" name="candidateId" value=<%=candidateObject.getCandidateId()%>>
 		  		<input type="text" name="candidateName" value=<%=candidateObject.getCandidateName()%> class="form-control">	  		
 		  		</div>
 		  	</div>	
@@ -35,7 +38,7 @@ Candidate candidateObject=candidateDao.viewCandidateById(candidate.getCandidateI
 		  	<div class="row">	
 		  		<div class="col-sm-2 bg-primary text-white" style="padding: 10px;">Enquiry Date</div>
 		  		<div class="col-sm-10 bg-info text-white" style="padding: 10px;">
-		  		<input type="date" name="candidateCurrentDate" value=<%=candidateObject.getCandidateCurrentDate()%> class="form-control">
+		  		<input type="text" name="candidateCurrentDate" value=<%=candidateObject.getCandidateCurrentDate()%> class="form-control">
 		  		</div>
 		  	</div>
 		  	<div class="row">	
@@ -86,10 +89,11 @@ Candidate candidateObject=candidateDao.viewCandidateById(candidate.getCandidateI
 			  			<input type="submit" value="Update" class="form-control  bg-success text-white">
 			  		</div>
 			  		<div class="col-sm-6 " style="padding: 10px;">
-			  			<input type="submit" value="Cancel" class="form-control  bg-success text-white">
+			  			<a href="viewSomeImportantUsingNavbarLink.jsp" class="form-control  bg-success text-white text-center">Cancel</a>
 			  		</div>
 			  	</div>	
 		  	</div>			
 		</div>
     </div>
+  </form>  
 </div>

@@ -1,3 +1,4 @@
+<%@ page errorPage="myErrorPage.jsp" %>
 <%@page import="java.util.List"%>
 <%@page import="com.batch.bean.Candidate"%>
 <%@page import="java.util.ArrayList"%>

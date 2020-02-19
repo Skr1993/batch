@@ -1,7 +1,7 @@
 <%@ include file="link.html"%>
 <%@ include file="navbar.jsp"%>
 <div class="container">
-	<h1>Admin Login Panel</h1>
+	<h1 class="text-center">Admin Login Form</h1>
  <form action="loginCheck.jsp" method="post">
     <div class="form-group">
       <label for="adminEmail">Email:</label>

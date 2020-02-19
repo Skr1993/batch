@@ -1,3 +1,4 @@
+<%@ page errorPage="myErrorPage.jsp" %>
 <%@ include file="link.html"%>
 <%@ include file="navbar.jsp"%>
 <%@page import="java.util.List"%>

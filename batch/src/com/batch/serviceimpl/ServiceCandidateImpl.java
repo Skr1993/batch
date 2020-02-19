@@ -15,6 +15,7 @@ public class ServiceCandidateImpl implements ServiceCandidate  {
 	DBConnectionInfo connectionInfo=null;
 	List<Candidate> candidateList=null;
 	Candidate candidatebean=null;
+	
 	public ServiceCandidateImpl() {
 		 connectionInfo=new DBConnectionInfo();
 	}
@@ -37,13 +38,12 @@ public class ServiceCandidateImpl implements ServiceCandidate  {
 			String arra[]=candidate.getCandidateCourse();
 			String multicourse="";
 			for (String course : arra){
-				multicourse=course+","+multicourse;
+				multicourse=course+" "+multicourse;
 			}
 			statement.setString(9, multicourse);
 			statement.setNString(10, candidate.getCandidateComment());
 			status=statement.executeUpdate();
 			if(status>0){
-				//connection.commit();
 				connection.close();
 				return status;
 			}else{
@@ -86,7 +86,6 @@ public class ServiceCandidateImpl implements ServiceCandidate  {
 		}
 		return candidateList;
 	}
-
 	
 	@Override
 	public Candidate viewCandidateById(int candidateId) {
@@ -119,8 +118,34 @@ public class ServiceCandidateImpl implements ServiceCandidate  {
 
 	@Override
 	public int updateCandidateById(Candidate candidate) {
-		// TODO Auto-generated method stub
-		return 0;
+		int status=0;
+		try{
+		Connection connection=connectionInfo.getDBConnectionInfo();
+		String sql="{call batch.updateCandidateById(?,?,?,?,?,?,?,?,?,?,?)};";
+		CallableStatement statement=connection.prepareCall(sql);
+		statement.setString(1, candidate.getCandidateCurrentDate());
+		statement.setString(2, candidate.getCandidateName());
+		statement.setString(3, candidate.getCandidateFatherName());
+		statement.setString(4, candidate.getCandidateEmail());
+		statement.setString(5, candidate.getCandidateMobile());
+		statement.setString(6, candidate.getCandidateCollegeUniversity());
+		statement.setString(7, candidate.getCandidateQualification());
+		statement.setString(8, candidate.getCandidatePermanentAddress());
+		statement.setString(9, candidate.getCandidateCourseOne());
+		statement.setString(10, candidate.getCandidateComment());
+		statement.setInt(11, candidate.getCandidateId());
+		status=statement.executeUpdate();
+		if(status>0){
+			connection.close();
+			return status;
+		}else{
+			connection.close();
+			return status;
+		}
+		}catch (Exception e) {
+			System.out.println("ServiceCandidateImpl:updateCandidateById"+e);
+		}
+		return status;
 	}
 
 }

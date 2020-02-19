@@ -7,6 +7,7 @@
 <%@ include file="navbar.jsp"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <div class="container">
+	<h1 class="text-center">Admin Registration Form</h1>
   <form   action="adminReg.jsp"    method="post">
   	
   	<div class="form-group">

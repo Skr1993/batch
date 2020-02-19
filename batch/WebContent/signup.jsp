@@ -1,3 +1,4 @@
+<%@ page errorPage="myErrorPage.jsp" %>
 <%@page import="java.time.format.DateTimeFormatter"%>
 <%@page import="java.time.LocalDate"%>
 <%@page import="com.batch.bean.Course"%>
@@ -7,6 +8,7 @@
 <%@ include file="navbar.jsp"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <div class="container">
+	<h1 class="text-center">Candidate Registration Form</h1>
   <form   action="candidateReg.jsp"    method="post">
   	<div class="form-group">
   		  <label for="currentDate">Current Date:</label>

@@ -1,3 +1,4 @@
+<%@ page errorPage="myErrorPage.jsp" %>
 <%@ include file="link.html"%>
 <%@ include file="navbar.jsp"%>
 <%@page import="java.util.List"%>
@@ -6,7 +7,7 @@
 <%@page import="com.batch.serviceimpl.ServiceCandidateImpl"%>
 <%@page import="com.batch.service.ServiceCandidate"%>
 <div class="container-fluid">
-  <h2>View All Candidate Information</h2>
+  <h2 class="text-center">View All Candidate Information</h2>
   <table class="table table-bordered">
     <thead >
       <tr>

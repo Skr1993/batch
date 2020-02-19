@@ -1,5 +1,8 @@
+<%@ include file="link.html"%>
+<%@ include file="navbar.jsp"%>
 <div class="container">
- <form action="/action_page.php">
+<h1 class="text-center">Candidate Login Form</h1>
+ <form action="#">
     <div class="form-group">
       <label for="email">Email:</label>
       <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
@@ -12,6 +15,6 @@
       <label><input type="checkbox" name="remember"> Remember me</label>
     </div>
     <button type="submit" class="btn btn-success">Submit</button>
-    <a href="signup.html" class="btn btn-info"> Signup</a>
+    <a href="signup.jsp" class="btn btn-info"> Signup</a>
     </form>
 </div>

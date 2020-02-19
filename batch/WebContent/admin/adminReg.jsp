@@ -1,3 +1,4 @@
+<%@ page errorPage="myErrorPage.jsp" %>
 <%@page import="com.batch.serviceimpl.ServiceAdminImpl"%>
 <%@page import="com.batch.service.ServiceAdmin"%>
 <%@page import="com.batch.serviceimpl.ServiceCourseImpl"%>
