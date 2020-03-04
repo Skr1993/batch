@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 public class Candidate {
 		private int candidateId;
+		private int candidateFlag;
 		private String candidateCurrentDate;
 		private String candidateName;
 		private String candidateFatherName;
@@ -15,6 +16,8 @@ public class Candidate {
 		private String candidateCourse[];
 		private String candidateCourseOne;
 		private String candidateComment;
+		private String candidatePassword;
+		private String candidateRepassword;
 		
 		public Candidate() {}
 		
@@ -92,7 +95,31 @@ public class Candidate {
 		public void setCandidateCourseOne(String candidateCourseOne) {
 			this.candidateCourseOne = candidateCourseOne;
 		}
-		
+			
+		public int getCandidateFlag() {
+			return candidateFlag;
+		}
+
+		public void setCandidateFlag(int candidateFlag) {
+			this.candidateFlag = candidateFlag;
+		}
+
+		public String getCandidatePassword() {
+			return candidatePassword;
+		}
+
+		public void setCandidatePassword(String candidatePassword) {
+			this.candidatePassword = candidatePassword;
+		}
+				
+		public String getCandidateRepassword() {
+			return candidateRepassword;
+		}
+
+		public void setCandidateRepassword(String candidateRepassword) {
+			this.candidateRepassword = candidateRepassword;
+		}
+
 		@Override
 		public String toString() {
 			return  candidateId + "|" + candidateCurrentDate + "|" + candidateName + "|" + candidateFatherName

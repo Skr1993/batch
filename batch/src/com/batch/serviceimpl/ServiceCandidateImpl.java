@@ -148,4 +148,26 @@ public class ServiceCandidateImpl implements ServiceCandidate  {
 		return status;
 	}
 
+	
+	@Override
+	public String getCandidateEmailById(Candidate candidate) {
+		String email=null;
+		try{
+			Connection connection=connectionInfo.getDBConnectionInfo();
+			String sql="call batch.getCandidateEmailById(?,?)";
+			CallableStatement statement=connection.prepareCall(sql);
+			statement.setInt(1,candidate.getCandidateId());
+			statement.setString(2,candidate.getCandidateMobile());
+			ResultSet set=statement.executeQuery();
+			if(set.next()){
+				email=set.getString("candidateEmail");
+			}else{
+				email="ashumishra9015@gmail.com";
+			}
+		}catch (Exception e) {
+			System.out.println("ServiceCandidateImpl:getCandidateEmailById:"+e);
+		}
+		return email;
+	}
+
 }

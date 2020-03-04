@@ -9,4 +9,5 @@ public interface ServiceCandidate {
 	public abstract List<Candidate> viewAllCandidate();
 	public abstract Candidate viewCandidateById(int candidateId);
 	public abstract int updateCandidateById(Candidate candidate);
+	public abstract String getCandidateEmailById(Candidate candidate);
 }
